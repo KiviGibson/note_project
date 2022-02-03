@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Inter', sans-serif; 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -10,4 +10,112 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.navbar{
+  width:23vw;
+  background-color: #040303;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:start;
+  gap: 3px;
+  transition: 0.3s;
+  overflow-x: visible;
+  overflow-y: scroll;
+  position: absolute;
+  z-index: 2;
+}
+.unhide{
+  top: 0;
+  left: 0;
+}
+.hide{
+  top: 0;
+  left: -20vw;
+}
+.hide-button{
+  position: fixed;
+  aspect-ratio: 1;
+  top: 50vh;
+  transition: 00.3s;
+  border-radius: 50%;
+  border: #000000 3px solid;
+  font-weight: 700;
+  color: #8400ff;
+  background-color: #0e0c1d;
+}
+.hide-button:hover{
+  background-color: #8400ff;
+  color: #ffffff;
+}
+.unhiden{
+  left: 20vw;
+}
+.hiden{
+  left: 0vw;
+}
+::-webkit-scrollbar{
+  width: 0;
+}
+.navbar .newdoc{
+  color: #8400ff;
+  background-color: rgba(0, 0, 0, 0.014);
+  border: #8400ff 5px solid;
+  width: 15vw;
+  height: 12vh;
+  font-weight: 700;
+  border-radius: 15px/15px;
+  position: relative;
+  letter-spacing: 0.4px;
+  margin-top: 10px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.navbar .newdoc:hover{
+  color: #ffffff;
+  background-color: #8400ff;  
+}
+
+.document{
+  background-color: rgb(14, 14, 14);
+  border-radius: 15px/15px;
+  width: 15vw;
+  height: 8vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(255, 255, 255);
+  border: rgb(132, 0, 255) 2px solid;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.document:hover{
+  color: #8400ff;
+}
+.icon{
+  font-weight: 700;
+}
+.selected{
+  background-color: #8400ff !important;
+  color: rgb(255, 255, 255)!important;
+}
+.editor{
+  background-color: #0e0c1d;
+  width: 97vw;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100vh;
+}
+.textfield{
+  background-color: #0e0c1d;
+  border: 1px solid #0c000e;
+  color: #ffffff;
+  width: 90vw;
+  height: 90vh;
+  resize: none;
+}
+.textfield:focus{
+  border:#8400ff;
 }
