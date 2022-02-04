@@ -6,6 +6,8 @@ import Editor from './components/editor';
 
 function App() {
   const [docs, setDocs] = React.useState(JSON.parse(localStorage.getItem("notes")) || [] );
+  const note = JSON.parse(localStorage.getItem("notes")) || [] ;
+  const [id,setId] = React.useState(0);
   const [isHidden,setIsHidden] = React.useState(false);
   const [text,setText] = React.useState("");
 
@@ -18,24 +20,24 @@ function App() {
     localStorage.setItem("notes",JSON.stringify(a));
   }
 
-  function changeNotes(id){
-    setDocs(prev => prev.map((prev)=>{return(prev[0] == id ? {...prev,[2]:text,[3]:true} : {...prev,[3]:false})}));
-    saveText();
-    loadText(id);
-    
-    
+  function changeNotes(_id){
+    if(id == _id) return(0);
+    setDocs(prev => prev.map((prev)=>{return(prev[0] == _id ? {...prev,[3]:true} : {...prev,[3]:false})}));
+    loadText(_id);
+    setId(_id);
   }
   function changeNavPos(){
     setIsHidden((prev)=>!prev);
   }
   function saveText(){
-    localStorage.setItem("notes",JSON.stringify(docs));
+    const a = note.map((prev)=>{return(prev[0] == id ? {...prev,[2]:text} : {...prev})});
+    localStorage.setItem("notes",JSON.stringify(a));
   }
   function loadText(id){
     console.log(id);
     for(var i=0;i<docs.length;i++){
-      if(docs[i][0]==id)
-      setText(docs[i][2]);
+      if(note[i][0]==id)
+      setText(note[i][2]);
     }
   }
   function textChange(event){
@@ -45,7 +47,7 @@ function App() {
   return (
     <div className="App">
         <Navbar hide={isHidden} changesize={changeNavPos} docs={docs} toggle={changeNotes} addNotes={addNotes}/>
-        <Editor Change={textChange} value={text}/>
+        <Editor Change={textChange} value={text} save={saveText}/>
     </div>
   );
 }

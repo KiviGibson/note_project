@@ -20,7 +20,7 @@ code {
   align-items: center;
   justify-content:start;
   gap: 3px;
-  transition: 0.3s;
+  transition: 0.1s;
   overflow-x: visible;
   overflow-y: scroll;
   position: absolute;
@@ -38,7 +38,7 @@ code {
   position: fixed;
   aspect-ratio: 1;
   top: 50vh;
-  transition: 00.3s;
+  transition: 00.1s;
   border-radius: 50%;
   border: #000000 3px solid;
   font-weight: 700;
@@ -55,9 +55,40 @@ code {
 .hiden{
   left: 0vw;
 }
-::-webkit-scrollbar{
-  width: 0;
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
 }
+::-webkit-scrollbar-button {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: #8400ff;
+  border: 0px solid #8400ff;
+  border-radius: 100px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8400ff;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #8400ff;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+  border: 0px none #8400ff;
+  border-radius: 100px;
+}
+::-webkit-scrollbar-track:hover {
+  background: #000000;
+}
+::-webkit-scrollbar-track:active {
+  background: #000000;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
 .navbar .newdoc{
   color: #8400ff;
   background-color: rgba(0, 0, 0, 0.014);
@@ -69,7 +100,7 @@ code {
   position: relative;
   letter-spacing: 0.4px;
   margin-top: 10px;
-  transition: 0.3s;
+  transition: 0.1s;
   cursor: pointer;
 }
 .navbar .newdoc:hover{
@@ -87,7 +118,7 @@ code {
   justify-content: center;
   color: rgb(255, 255, 255);
   border: rgb(132, 0, 255) 2px solid;
-  transition: 0.3s;
+  transition: 0.1s;
   cursor: pointer;
 }
 .document:hover{
@@ -101,7 +132,7 @@ code {
   color: rgb(255, 255, 255)!important;
 }
 .editor{
-  background-color: #0e0c1d;
+  background-color: #120f24;
   width: 97vw;
   position: absolute;
   top: 0;
@@ -110,12 +141,34 @@ code {
 }
 .textfield{
   background-color: #0e0c1d;
-  border: 1px solid #0c000e;
+  border: none;
   color: #ffffff;
-  width: 90vw;
-  height: 90vh;
+  width: 95vw;
+  height: 85vh;
   resize: none;
+  outline: none;
+  
 }
 .textfield:focus{
   border:#8400ff;
+}
+.save-button{
+  color: #8400ff;
+  background-color: rgba(0, 0, 0, 0.014);
+  border: #8400ff 5px solid;
+  width: 10vw;
+  height: 10vh;
+  font-weight: 700;
+  border-radius: 15px/15px;
+  position: relative;
+  left: 40%;
+  top: 0;
+  letter-spacing: 0.4px;
+  margin-top: 10px;
+  transition: 0.1s;
+  cursor: pointer;
+}
+.save-button:hover{
+  color: #ffffff;
+  background-color: #8400ff; 
 }
