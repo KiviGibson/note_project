@@ -6,7 +6,7 @@ import Editor from './components/editor';
 
 function App() {
   const [docs, setDocs] = React.useState(JSON.parse(localStorage.getItem("notes")) || [] );
-  const note = JSON.parse(localStorage.getItem("notes")) || [] ;
+  let note = JSON.parse(localStorage.getItem("notes")) || [] ;
   const [id,setId] = React.useState(0);
   const [isHidden,setIsHidden] = React.useState(false);
   const [text,setText] = React.useState("");
@@ -16,17 +16,19 @@ function App() {
     let a= [...docs];
     console.log(a);
     a.push(newNote);
+    setingId(a);
     setDocs(a);
     localStorage.setItem("notes",JSON.stringify(a));
   }
-
   function changeNotes(_id){
     if(id == _id) return(0);
     if(textIsUp == false)
-    if(window.confirm("chcesz zapisać?")){
-      saveText();
+    {
       setTextIsUp(true);
-    }
+      if(window.confirm("chcesz zapisać?")){
+        saveText();
+      
+    }}
     setDocs(prev => prev.map((prev)=>{return(prev[0] == _id ? {...prev,[3]:true} : {...prev,[3]:false})}));
     loadText(_id);
     setId(_id);
@@ -50,9 +52,29 @@ function App() {
     setText(()=>a);
     setTextIsUp(false);
   }
+  function deleteNote(id){
+    if(window.confirm("Are you sure to delete this file?")){
+      const a = note.map((prev)=>{return{...prev}});
+      for(var i=0;i<note.length;i++){
+        if(note[i][0]==id)
+        a.splice(i,1);
+      }
+      setingId(a);
+      localStorage.setItem("notes",JSON.stringify(a));
+      setDocs(JSON.parse(localStorage.getItem("notes")));
+      if(loadText(id)){
+        loadText(0);
+      }
+    }    
+  }
+  function setingId(item){
+    for(var i=0;i<item.length;i++){
+      item[i][0] = i+1;
+    }
+  }
   return (
     <div className="App">
-        <Navbar hide={isHidden} changesize={changeNavPos} docs={docs} toggle={changeNotes} addNotes={addNotes}/>
+        <Navbar hide={isHidden} changesize={changeNavPos} delete={deleteNote} docs={docs} toggle={changeNotes} addNotes={addNotes}/>
         <Editor Change={textChange} value={text} save={saveText}/>
     </div>
   );

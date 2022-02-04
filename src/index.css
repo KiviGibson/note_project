@@ -126,6 +126,43 @@ code {
 }
 .icon{
   font-weight: 700;
+  font-size: 0.8em;
+}
+.delete{
+  opacity: 0.1%;
+}
+.delete:hover{
+  color: #000000 !important;
+}
+.document:hover .delete{
+  opacity: 100%;
+  font-weight: 700;
+  margin-left: 1vw;
+  border: none;
+  background-color: rgb(14, 14, 14);
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.1s;
+  border-radius: 50%;
+}
+.selected .delete{
+  opacity: 100%;
+  font-weight: 700;
+  margin-left: 1vw;
+  border: none;
+  background-color: rgb(14, 14, 14);
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.1s;
+  border-radius: 50%;
+}
+.selected .delete{
+  background-color: #8400ff !important;
+}
+.name{
+  font-weight: 700;
+  font-size: 0.8em;
+
 }
 .selected{
   background-color: #8400ff !important;
