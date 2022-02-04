@@ -37,6 +37,7 @@ function App() {
     setIsHidden((prev)=>!prev);
   }
   function saveText(){
+    if(textIsUp == false) setTextIsUp(true);
     const a = note.map((prev)=>{return(prev[0] == id ? {...prev,[2]:text} : {...prev})});
     localStorage.setItem("notes",JSON.stringify(a));
   }
