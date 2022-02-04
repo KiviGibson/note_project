@@ -144,10 +144,10 @@ code {
   border: none;
   color: #ffffff;
   width: 95vw;
-  height: 85vh;
+  height: 80%;
   resize: none;
   outline: none;
-  
+  margin-top: 10px;
 }
 .textfield:focus{
   border:#8400ff;

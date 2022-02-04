@@ -10,7 +10,7 @@ function App() {
   const [id,setId] = React.useState(0);
   const [isHidden,setIsHidden] = React.useState(false);
   const [text,setText] = React.useState("");
-
+  const [textIsUp,setTextIsUp] = React.useState(true);
   function addNotes(){
     const newNote = [docs.length,"Note","#NotePage",false];
     let a= [...docs];
@@ -22,6 +22,11 @@ function App() {
 
   function changeNotes(_id){
     if(id == _id) return(0);
+    if(textIsUp == false)
+    if(window.confirm("chcesz zapisać?")){
+      saveText();
+      setTextIsUp(true);
+    }
     setDocs(prev => prev.map((prev)=>{return(prev[0] == _id ? {...prev,[3]:true} : {...prev,[3]:false})}));
     loadText(_id);
     setId(_id);
@@ -43,6 +48,7 @@ function App() {
   function textChange(event){
     let a = event.target.value;
     setText(()=>a);
+    setTextIsUp(false);
   }
   return (
     <div className="App">
